@@ -52,33 +52,12 @@
         <img src="../img/backgroundLeft.png" class="w-[200px] absolute bottom-0 left-0 hidden lg:block">
         <img src="../img/backgroundRight.png" class="w-[200px] absolute bottom-0 right-0">
     </section>
-    <body class="overflow-hidden">
-        <style>
-      h3 {
-        font-size: 3rem;
-      }
-      h4 {
-        font-size: 2rem;
-        width: fit-content;
-        margin-left: auto;
-        margin-right: auto;
-      }
-      h5 {
-        font-size: 2rem;
-      }
-      .badge,
-      h4 {
-        background: linear-gradient(148deg, #00a94d, #006d33);
-        padding: 10px 10px 3px;
-        border-radius: 1rem;
-        margin-bottom: 20px;
-      }
-        </style>
-        <div id="loadingIn">
+    <body class="overflow-x-hidden">
+        <div id="loadingOut">
             <img alt="babbo natale pazzo sgravato" src="../img/loadingImage.png">
         </div>
-        <main id="container" class="max-w-[95%] md:max-w-[75%] mx-auto flex flex-col z-10 p-4">
-            <section id="title" class="py-3 flex items-center justify-around">
+        <main id="container" class="max-w-[95%] md:max-w-[75%] mx-auto scaleAnimation flex flex-col justify-center scaleOut choose-conf-container">
+            <section id="title" class="pb-3 flex items-center justify-around">
                 <a href="#" class="logo mt-5 sm:mt-0 hover:scale-110 transition-all duration-500 ease-in-out flex justify-center items-center text-white">
                     <span class="text-[48px] md:text-[64px] mr-4">Secret</span>
                     <img
@@ -90,49 +69,38 @@
                     <span class="text-[48px] md:text-[64px] ml-4">Santa</span>
                 </a>
             </section>
-            <section class="text-center mb-[48px]">
-                <h3>
-                    CIAO
-                    <br class="block md:hidden">
-                    <span id="player" class="badge"></span>
-                </h3>
-                <h5>DOVRAI FARE IL REGALO A</h5>
-                <div>
-                    <h4 id="receiver"></h4>
+            <section class="py-3 flex items-center justify-around flex-col flex-col md:flex-row gap-4 config-container">
+                <div class="config flex justify-center items-center flex-col text-center" data-navigate="createSecretSanta">
+                    <img
+                        alt="logo"
+                        src="../img/candle.png"
+                        width="200"
+                        height="200"
+                    >
+                    <h3>SOLITARIA</h3>
+                    <span>Raccogli prima tutte le mail dei partecipanti per configurare il secretSanta</span>
                 </div>
-                <h5>LA CATEGORIA ASSEGNATA É:</h5>
-                <div>
-                    <h4 id="category"></h4>
-                </div>
-                <div class="p-4 mt-4 font-bold" style="background: linear-gradient(60deg, #f8000094, #f8000077)">
-                    <h5>REGOLE PER IL SECRET SANTA:</h5>
-                    <ul>
-                        <li class="mb-2">
-                            BUDGET MASSIMO:
-                            <b id="budget"></b>
-                        </li>
-                        <li class="mb-2">
-                            SUL PACCHETTO ALL'ESTERNO BISOGNERÁ INSERIRE:
-                            <ul class="pl-4">
-                                <li class="mt-1" style="text-decoration: underline">
-                                    RICEVENTE
-                                </li>
-                                <li class="mt-1" style="text-decoration: underline">
-                                    CATEGORIA
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="mb-2">
-                            ALL'INTERNO BISOGNERÁ INSERIRE ANCHE UN INDOVINELLO PER FAR
-              INDOVINARE A FINE APERTURA DEI REGALI CHI HA FATTO IL REGALO
-                            <br>
-                            <i class="mt-1">(es: Sono Andrei, scrivo Rumeno Bastardo)</i>
-                        </li>
-                    </ul>
+                <div class="config flex justify-center items-center flex-col text-center" data-navigate="generateSantaTeam">
+                    <img
+                        alt="logo"
+                        src="../img/multiCandle.png"
+                        width="200"
+                        height="200"
+                    >
+                    <h3>TEAM</h3>
+                    <span>Crea un team ed invita i partecipanti tramite un link che inseriranno loro i dati</span>
                 </div>
             </section>
         </main>
-        <footer></footer>
-        <script src="./mainGiftDetail.js"></script>
+        <footer class="z-[-1] fixed top-0 left-0 w-full h-[100vh]">
+            <img
+                class="snowman"
+                alt="pazzo pupazzo"
+                src="../img/stepper1.png"
+                height="300"
+            >
+        </footer>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script src="./main.js"></script>
     </body>
 </html>
