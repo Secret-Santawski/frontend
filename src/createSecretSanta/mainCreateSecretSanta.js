@@ -2,8 +2,64 @@ document.addEventListener("DOMContentLoaded", function () {
   const NAME_CREATOR = document.getElementById("nameCreator"),
     MAIL_CREATOR = document.getElementById("mailCreator"),
     CONTAINER_PARTECIPANTI = document.getElementById("containerPartecipanti"),
-    EVENT_FOR_INPUT = ["keyup", "change"];
+    EVENT_FOR_INPUT = ["keyup", "change"],
+    CATEGORY_INPUT = document.getElementById("category-input"),
+    CHIPS_CONTAINER = document.querySelector(".chips"),
+    CATEGORIES = [
+      "REGALI PER UN NEONATO",
+      "OGGETTI DI LEGNO",
+      "REGALO PER IL PARTNER",
+      "REGALO INDESIDERATO",
+      "FATTO A MANO",
+      "DA USARE IN COMPAGNIA",
+      "UN REGALO UTILE",
+      "ECOSOSTENIBILITÁ",
+      "APPARENTEMENTE COSTOSO MA ECONOMICO",
+      "LUDOPATIA",
+      "GADGET TECH",
+      "LIBRO",
+      "GASTRONOMIA",
+      "CURA PERSONALE",
+      "SPORT",
+      "PER L'INVERNO",
+      "PER LA CASA",
+      "BOARD GAME",
+      "ABBIGLIAMENTO",
+      "REGALO NON MATERIALE",
+    ];
   window.scroll(0, 0);
+
+  document.getElementById("generaCasuali").addEventListener("click", (e) => {
+    e.preventDefault();
+    generaCategorie();
+  });
+
+  generaCategorie();
+
+  function estraiCasuali(array, quantita) {
+    var copiaArray = array.slice(); // Copia l'array originale per evitare modifiche indesiderate
+    var valoriCasuali = [];
+
+    for (var i = 0; i < quantita; i++) {
+      var indiceCasuale = Math.floor(Math.random() * copiaArray.length);
+      var valoreCasuale = copiaArray.splice(indiceCasuale, 1)[0];
+      valoriCasuali.push(valoreCasuale);
+    }
+
+    return valoriCasuali;
+  }
+
+  function generaCategorie() {
+    document.querySelectorAll(".generated").forEach((c) => c.remove());
+    estraiCasuali(CATEGORIES, 6).forEach((cat) => {
+      var chip = document.createElement("div");
+      chip.className = "chip generated";
+      chip.innerHTML = cat + '<span class="closeCat">&times;</span>';
+
+      // Inserire il nuovo elemento prima dell'elemento di input
+      CHIPS_CONTAINER.insertBefore(chip, CHIPS_CONTAINER.firstChild);
+    });
+  }
 
   function bindEvent(
     inputName,
@@ -131,21 +187,6 @@ document.addEventListener("DOMContentLoaded", function () {
     .addEventListener("click", (e) => {
       e.preventDefault();
       let partecipanti = document.querySelectorAll(".correctUser");
-      let categories = [
-        "REGALI PER UN NEONATO",
-        "OGGETTI DI LEGNO",
-        "OGGETTO PER UCCIDERE QUALCUNO SEGRETAMENTE",
-        "QUALCOSA CHE MIGLIORI LA GIORNATA",
-        "REGALO PER IL PARTNER",
-        "REGALO INDESIDERATO",
-        "FATTO A MANO",
-        "DA USARE IN COMPAGNIA",
-        "UN REGALO UTILE",
-        "ECOSOSTENIBILITÁ",
-        "APPARENTEMENTE COSTOSO MA ECONOMICO",
-        "LUDOPATIA",
-        "OGGETTO CUTIE",
-      ];
       if (document.querySelectorAll(".correctUser").length >= 2) {
         //valido
         let players = [];
@@ -254,6 +295,31 @@ document.addEventListener("DOMContentLoaded", function () {
       }, 500);
     }, 1000);
   }, 1);
+
+  // Aggiungere un gestore di eventi per l'evento keyup
+  CATEGORY_INPUT.addEventListener("keyup", function (event) {
+    var data = this.value;
+    if (event.keyCode === 13) {
+      // Creare un nuovo elemento div con la classe "chip"
+      var chip = document.createElement("div");
+      chip.className = "chip";
+      chip.innerHTML = data + '<span class="closeCat">&times;</span>';
+
+      CHIPS_CONTAINER.append(chip);
+
+      this.value = "";
+    }
+  });
+
+  // Aggiungere un gestore di eventi per l'evento click al documento
+  document.addEventListener("click", function (event) {
+    // Verificare se l'elemento cliccato ha la classe "closeCat"
+    if (event.target.classList.contains("closeCat")) {
+      // Rimuovere il genitore dell'elemento cliccato (il div con la classe "chip")
+      event.target.parentNode.remove();
+    }
+  });
+
   //debug
   /*
   NAME_CREATOR.value = "test";

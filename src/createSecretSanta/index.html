@@ -100,6 +100,30 @@
                             <p class="text-red-500 text-sm italic">Insert a correct mail</p>
                         </div>
                     </div>
+                    <div class="category-container userContainer">
+                        <div class="flex flex-col">
+                            <h4 class="w-full text-center mb-0 mt-2 leading-3">Gift category</h4>
+                            <span class="mt-1 mb-2" style="font-size: 15px;line-height: 13px;font-style: italic;text-align: center;opacity: .5;">
+                                Inserisci nuove categorie che verranno assegnate casualmente ai partecipanti
+                            </span>
+                        </div>
+                        <div class="row flex flex-col">
+                            <div class="col-12 mt-3 flex justify-center">
+                                <input
+                                    class="chip-input appearance-none block w-full bg-gray-200 text-gray-700 border rounded border-red-500 py-3 px-4 mb-1 leading-tight focus:outline-none focus:bg-white"
+                                    id="category-input"
+                                    type="text"
+                                    placeholder="Insert new category"
+                                >
+                            </div>
+                            <div class="flex items-center gap-2 flex-col sm:flex-row">
+                                <div class="chips chips-initial input-field"></div>
+                                <button id="generaCasuali" class="w-[40px] md:w-[64px] min-w-[40px] md:min-w-[64px] rounded-full flex items-center justify-center">
+                                    <img src="../img/random.png" alt="add background" class="w-100 h-100">
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                     <div id="containerPartecipanti" class="w-full flex flex-col items-center" style="display: none">
                         <h4 class="w-full text-center">PARTECIPANTS</h4>
                         <div class="flex flex-wrap mb-6 userContainer">

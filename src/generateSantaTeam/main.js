@@ -21,4 +21,20 @@ document.addEventListener("DOMContentLoaded", function () {
       }, 500);
     }, 1000);
   }, 1);
+
+  // Insert new chip
+  $("#category-input").keyup(function(event) {
+    var data = this.value;
+    if (event.keyCode === 13) {
+      //alert(data);
+      $( '<div class="chip"> '+data+' <span class="closeCat" >&times;</span></div>' ).insertBefore(this);
+      $(this).val(null);
+    }
+  });
+
+  // Remove chip
+  $(document).on('click','.closeCat',function() {
+  //alert('test');
+  $(this).parent().remove();
+  });
 });

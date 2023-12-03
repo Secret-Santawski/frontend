@@ -279,6 +279,7 @@ form #buttonConfirmContainer button {
   opacity: 0;
   transform: translateY(-30px);
   cursor: not-allowed;
+  pointer-events: none;
 }
 form #buttonConfirmContainer button img {
   opacity: 0;
@@ -298,9 +299,51 @@ form #buttonConfirmContainer.formReady button {
   background-color: #00873e;
   color: #fff;
   cursor: pointer;
+  pointer-events: all;
 }
 form #buttonConfirmContainer.formReady button img {
   opacity: 1;
+}
+
+.category-container {
+  background: rgba(24, 24, 24, 0.4509803922);
+  box-shadow: 0px 0px 5px -1px #20774d !important;
+}
+.category-container .chips {
+  padding: 3px 8px;
+  border: 1px solid rgba(220, 220, 220, 0.2117647059);
+  border-radius: 8px;
+}
+.category-container .chip.generated {
+  background: #027034;
+}
+.category-container .chip {
+  font-size: 15px;
+  font-weight: bold;
+  line-height: 30px;
+  padding: 0px 13px;
+  border-radius: 16px;
+  background-color: #00873e;
+  margin: 3px 5px;
+  display: inline-block;
+  outline: none;
+}
+.category-container .chip:focus {
+  background-color: #51c5c2;
+  color: #fff;
+}
+.category-container .closeCat {
+  cursor: pointer;
+  margin-left: 8px;
+}
+.category-container .chips.chips-initial input.chip-input {
+  display: inline-block;
+  float: none;
+  width: 120px;
+  min-width: 30px;
+  border: none;
+  outline: none;
+  background: transparent;
 }
 
 .snowman {
